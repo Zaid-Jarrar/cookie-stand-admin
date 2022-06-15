@@ -12,27 +12,28 @@ import LoginForm from "./components/LoginForm";
 
 
 export default function Home() {
+  const [jwt,setJwt] = useState('');
 
 
-  const [LoggedIn,setLogin] = useState(false)
+  // const [LoggedIn,setLogin] = useState(false)
 
   const [report, setReport] = useState([]);
   const [counter, setCounter] = useState(0);
   const [hourly_sales, setHourlySales] = useState([])
   
-  function loginHandle(event) {
-    event.preventDefault();
-    const loginConfig = {
-      username: event.target.username.value,
-      password: event.target.password.value,
-    };
-    function validateForm() {
-      if (loginConfig.username.length > 0 && loginConfig.password.length > 0) {
-        return true;}
-        else{
-          return false
-        }}   
-    {validateForm()?setLogin(true):alert("Please fill in all fields")}}
+  // function loginHandle(event) {
+  //   event.preventDefault();
+  //   const loginConfig = {
+  //     username: event.target.username.value,
+  //     password: event.target.password.value,
+  //   };
+  //   function validateForm() {
+  //     if (jwt) {
+  //       return true;}
+  //       else{
+  //         return false
+  //       }}   
+  //   {validateForm()?setLogin(true):alert("Please fill in all fields")}}
 
   function formHandle(event) {
     event.preventDefault();
@@ -51,20 +52,22 @@ export default function Home() {
   return (
     
     <>
-      { LoggedIn ?
-        <div className="bg-[#1a0d1e] h-screen"> 
-        <Head />
+      <Head />
       <Header />
+      { jwt.length ?
+        <div className="bg-[#1a0d1e] h-screen"> 
+
 
       
       <Main formHandle={formHandle} />
       {/* <h1 className="text-center text-white">Report table coming soon......</h1>
       <h1 className="text-center text-white">{JSON.stringify(report)}</h1> */}
-      { counter > 0 ? <ReportTable report={report} /> : <h2  className="text-center text-white">No Cookie Stands Available</h2>}
+      <ReportTable report={report} token={jwt} /> 
 
-      <Footer counter={counter}/> </div>: <LoginForm loginHandle={loginHandle}/>}
-  
+       </div>: <LoginForm setToken= {setJwt}/>}
+       <Footer counter={counter}/>
       </>
+
       
     
   );

@@ -18,8 +18,8 @@ function LoginForm({loginHandle,setToken}) {
       setLoading(true)
   
       const formData = {
-        username: "admin" || e.target.username.value,
-        password: "admin" || e.target.password.value,
+        username:  e.target.username.value,
+        password:  e.target.password.value,
       };
   
       await axios.post("https://cookie-standss.herokuapp.com/api/token/", formData)
@@ -37,7 +37,7 @@ function LoginForm({loginHandle,setToken}) {
     };
   return (
     <div className="h-screen flex justify-center my-10 border-collapse">
-        <form  onSubmit = {loginHandle} className=" w-1/2 h-full py-40">
+        <form  onSubmit = {onLogin} className=" w-1/2 h-full py-40">
             <fieldset className="border-8 border-gray-300 shadow-md">
                 <label>
                     <span className="block text-gray-700 text-sm font-bold mb-2">

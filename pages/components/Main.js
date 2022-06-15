@@ -1,6 +1,7 @@
-
+import axios from 'axios';
 
 function Main(props) {
+
   return (
     <div className="mx-auto my-8 bg-[#342c2c] w-3/4 text-center rounded-lg">
         <form onSubmit={props.formHandle}>  
