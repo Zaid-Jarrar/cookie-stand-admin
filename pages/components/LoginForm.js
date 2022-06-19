@@ -16,6 +16,7 @@ function LoginForm({loginHandle,setToken}) {
       e.preventDefault();
   
       setLoading(true)
+      
   
       const formData = {
         username:  e.target.username.value,
@@ -50,8 +51,6 @@ function LoginForm({loginHandle,setToken}) {
                     type="text"
                     placeholder="Username"
                     name = "username"
-
-                    // value={username}
                     >
                     
                 </input>

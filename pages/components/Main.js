@@ -1,10 +1,14 @@
-import axios from 'axios';
+
 
 function Main(props) {
+  
+
 
   return (
     <div className="mx-auto my-8 bg-[#342c2c] w-3/4 text-center rounded-lg">
+        {/* <form onSubmit={props.formHandle}> */}
         <form onSubmit={props.formHandle}>  
+
       <div>
         <h1 className="text-bold text-xl p-2 text-white">Create Cookie Stand</h1>
       </div>
@@ -16,7 +20,7 @@ function Main(props) {
         <label className="flex-col text-white">Minimum Customers Per Hour <input type="number" placeholder="" name="minimum_customers_per_hour" defaultValue="0" className="w-3/4 mx-4 text-center text-black" /></label>
         <label className="flex-col text-white">Maximum Customers Per Hour <input type="number" placeholder="" name="maximum_customers_per_hour" defaultValue="0" className="w-3/4 mx-4 text-center text-black"/></label>
         <label className="flex-col text-white">Average Cookies Per Hour <input type="number" placeholder="" name="average_cookies_per_sale" defaultValue="0" className="w-3/4 mx-4 text-center text-black"/></label>
-        <button type="submit" className="bg-[#1a0d1e]  text-white p-5 rounded-lg">Create</button>
+        <button type="submit" disabled={props.counter > 3} className="bg-[#1a0d1e]  text-white p-5 rounded-lg">Create</button>
 
       </div>
         <div>

@@ -19,7 +19,9 @@ export default function Home() {
 
   const [report, setReport] = useState([]);
   const [counter, setCounter] = useState(0);
-  const [hourly_sales, setHourlySales] = useState([])
+  // const [hourly_sales, setHourlySales] = useState([])
+
+  
   
   // function loginHandle(event) {
   //   event.preventDefault();
@@ -38,15 +40,28 @@ export default function Home() {
   function formHandle(event) {
     event.preventDefault();
 
-    setCounter(counter + 1);
+    // setCounter(counter + 1);
+
+
+
+    // var values = randomArray(14, event.target.maximum_customers_per_hour.value, event.target.minimum_customers_per_hour.value)
 
     const addedLocation = {
       location: event.target.location.value,
-      minCustomers: event.target.minimum_customers_per_hour.value,
-      maxCustomers: event.target.maximum_customers_per_hour.value,
+      minimum_customers_per_hour: event.target.minimum_customers_per_hour.value,
+      maximum_customers_per_hour: event.target.maximum_customers_per_hour.value,
       avgCustomers: event.target.average_cookies_per_sale.value,
+      
+
     };
-    setReport([ ...report, addedLocation ]);
+
+    setReport([...report,addedLocation]);
+
+
+    setCounter(counter + 1);
+    
+  
+
     // setReport(addedLocation);
   }
   return (
@@ -59,10 +74,10 @@ export default function Home() {
 
 
       
-      <Main formHandle={formHandle} />
+      <Main formHandle={formHandle}  counter={counter}/>
       {/* <h1 className="text-center text-white">Report table coming soon......</h1>
       <h1 className="text-center text-white">{JSON.stringify(report)}</h1> */}
-      <ReportTable report={report} token={jwt} /> 
+      <ReportTable report={report} token={jwt}/> 
 
        </div>: <LoginForm setToken= {setJwt}/>}
        <Footer counter={counter}/>
@@ -71,4 +86,6 @@ export default function Home() {
       
     
   );
+
 }
+
